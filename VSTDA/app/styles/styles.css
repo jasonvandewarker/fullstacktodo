@@ -1,0 +1,43 @@
+body {
+  font-family: 'Droid Serif', serif;
+  background-image: url(back.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  text-align: center;
+  padding-bottom: 15px;
+  text-shadow: 2px 2px 1px #222;
+}
+
+.High {
+  background-color: #d9534f;
+}
+
+.Medium {
+  background-color: #5bc0de;
+}
+
+.Low {
+  background-color: #5cb85c;
+}
+
+#bigbutton {
+  margin-top: 15px;
+  text-align: center;
+}
+
+#buttons {
+  display: block;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+li {
+  list-style-type: none;
+}
+
+label {
+  color: white;
+}

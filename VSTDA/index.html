@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="app" lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VSTDA</title>
+
+  <link rel="stylesheet" href="/app/styles/styles.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
+</head>
+<!-- sets the controller -->
+<body ng-controller="VstdaController as vm">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+  <h1>Very Simple To-Do App</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <form class="form-horizontal">
+          <div class="form-group">
+
+            <!-- input box -->
+            <label for="input">What to do?</label>
+            <input type="text" class="form-control" id="todoitem" placeholder="To Do" ng-model="vm.toDoObject.toDoInput">
+          </div>
+        </form>
+
+        <!-- select menu -->
+        <label for="selectmenu">What's the priority level?</label>
+        <select class="form-control" ng-model="vm.toDoObject.priority">
+          <option value="1">High</option>
+          <option value="2">Medium</option>
+          <option value="3">Low</option>
+        </select>
+<!-- This button has a click event that connects with the function in the controller that creates the array. -->
+        <button type="button" id="bigbutton" class="btn btn-primary btn-lg" ng-click="vm.postList()">Stuff To Be Done</button>
+      </div>
+      <!-- second column -->
+      <div class="col-md-8">
+        <!-- button group -->
+        <div id="buttons" class="btn-group">
+<!-- Each of these buttons creates a click event that sorts the list items -->
+          <button type="button" class="btn btn-primary" ng-click="sort = 'priority'">Highest Priority First</button>
+          <button type="button" class="btn btn-primary" ng-click="sort = '-priority'">Lowest Priority First</button>
+          <button type="button" class="btn btn-primary" ng-click="sort = 'sortType'">Sort Alphabetically</button>
+          </div>
+          <ul> Do this stuff:
+            <li ng-repeat="data in vm.toDoArray | orderBy: sort" ng-class="::{'High': vm.toDoObject.priority==1, 'Medium': vm.toDoObject.priority==2, 'Low': vm.toDoObject.priority==3}">{{data.toDo}}</li>
+          </ul>
+<!-- this li is dynamically made from the array created from the input and select menu. The class is set by the value of the select menu item choses
+and corresponds to a CSS class that changes the background color.  -->
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.js " integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin=" anonymous "></script>
+
+  <script src="/app/app.js "></script>
+  <script src="/app/vstda.controller.js "></script>
+</body>
+
+</html>
