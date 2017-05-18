@@ -1,29 +1,53 @@
-(function() {
-'use strict';
+(function () {
+    'use strict';
 
     angular
         .module('app')
         .factory('VSTDAFactory', VSTDAFactory);
 
-    VSTDAFactory.inject = ['$http'];   //should this be $inject?
+    VSTDAFactory.$inject = ['$http', '$q']; //should this be $inject?
 
-    function VSTDAFactory($http) {
+    function VSTDAFactory($http, $q) {
         var service = {
             getTodo: getTodo,
         };
-        
+
         return service;
 
         ////////////////
 
-        function getTodo() { 
-            $http.get('http://localhost:49781/api/todoes')
-            .then(function(data) {
-                vm.results = data; //data is probably not going to be the correct variable
+        function getTodo() {
+            var defer = $q.defer();
+            $http({
+                method: 'GET',
+                url: 'http://localhost:49781/api/todoes',
+                data: vm.toDoArray,
+            }).then(function (response) {
+                defer.resolve(response.data);
+            }, function (error) {
+                defer.reject(error);
+            })
 
-            }) //end of then in the function
-
-
+            return defer.promise;
         }
-    }
+
+        function postTodo(toDoArray) {
+            var defer = $q.defer();
+            $http({
+                method: 'POST',
+                url: 'http://localhost:49781/api/todoes',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                },
+                data: toDoArray,
+            }).then(function (response) {
+                defer.resolve(response.data);
+            }, function (error) {
+                defer.reject(error);
+            })
+            return defer.promise;
+        } //end of postToDo
+
+    } //end of factory function
+
 })();

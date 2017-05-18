@@ -16,6 +16,7 @@ namespace VSTDA.API.Models
         //columns
         public String TodoText { get; set; }
         public int SetPriority { get; set; }
+        public DateTime CreateDate { get; set; }
 
 
 
