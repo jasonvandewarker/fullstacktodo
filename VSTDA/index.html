@@ -10,7 +10,7 @@
   <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
   <!-- endbower -->
-
+  <link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
   <!-- inject:css -->
   <link rel="stylesheet" href="/app/styles/styles.css">
   <!-- endinject -->
@@ -23,24 +23,25 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <form class="form-horizontal">
+        <form class="form-horizontal" ng-submit="vm.addTodo(todo)">
           <div class="form-group">
 
             <!-- input box -->
             <label for="input">What to do?</label>
-            <input type="text" class="form-control" id="todoitem" placeholder="To Do" ng-model="vm.toDoObject.toDoInput">
+            <input type="text" class="form-control" id="todoitem" placeholder="To Do" ng-model="todo.ToDoText">
           </div>
-        </form>
 
-        <!-- select menu -->
-        <label for="selectmenu">What's the priority level?</label>
-        <select class="form-control" ng-model="vm.toDoObject.priority">
-          <option value="1">High</option>
-          <option value="2">Medium</option>
-          <option value="3">Low</option>
-        </select>
-        <!-- This button has a click event that connects with the function in the controller that creates the array. -->
-        <button type="button" id="bigbutton" class="btn btn-primary btn-lg" ng-click="vm.postList()">Stuff To Be Done</button>
+
+          <!-- select menu -->
+          <label for="selectmenu">What's the priority level?</label>
+          <select class="form-control" ng-model="todo.SetPriority">
+         <option value="1">High</option>
+         <option value="2">Medium</option>
+         <option value="3">Low</option>
+       </select>
+          <!-- This button has a click event that connects with the function in the controller that creates the array. -->
+          <button type="submit" id="bigbutton" class="btn btn-primary btn-lg" ng-click="vm.postList">Stuff To Be Done</button>
+        </form>
       </div>
       <!-- second column -->
       <div class="col-md-8">
@@ -52,11 +53,12 @@
           <button type="button" class="btn btn-primary" ng-click="sort = 'sortType'">Sort Alphabetically</button>
         </div>
         <ul> Do this stuff:
-          <li ng-repeat="data in vm.toDoArray | orderBy: sort" ng-class="::{'High': vm.toDoObject.priority==1, 'Medium': vm.toDoObject.priority==2, 
-            'Low': vm.toDoObject.priority==3}">{{data.toDo}}</li>
-        </ul>
+          <li ng-repeat="data in vm.toDoArray | orderBy: sort" ng-class="::{'High': todo.setPriority==1, 'Medium': todo.setPriority==2,
+          'Low': todo.setPriority==3}">{{data.toDo}}</li>
+      </ul>
 
-        <!-- this li is dynamically made from the array created from the input and select menu. 
+
+        <!-- this li is dynamically made from the array created from the input and select menu.
 The class is set by the value of the select menu item choses
 and corresponds to a CSS class that changes the background color.  -->
       </div>

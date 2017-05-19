@@ -7,12 +7,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using VSTDA.API.Infrastructure;
 using VSTDA.API.Models;
 
 namespace VSTDA.API.Controllers
-{
+{    [EnableCors("*", "*", "*")]
+
     public class TodoesController : ApiController
     {
         private TodoDataContext db = new TodoDataContext();
