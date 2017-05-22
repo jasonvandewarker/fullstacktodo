@@ -1,14 +1,10 @@
 body {
   font-family: 'Droid Serif', serif;
-  background-image: url(back.png);
-  background-size: 100%;
-  background-repeat: no-repeat;
+  
 }
 
-h1 {
+.jumbotron {
   text-align: center;
-  padding-bottom: 15px;
-  text-shadow: 2px 2px 1px #222;
 }
 
 .High {
@@ -28,16 +24,21 @@ h1 {
   text-align: center;
 }
 
-#buttons {
-  display: block;
-  text-align: center;
+*#buttons {
+  
+  margin-left: 30px;
   margin-bottom: 10px;
 }
 
-li {
-  list-style-type: none;
+#todoitem {
+  margin-bottom: 5px;
 }
 
-label {
-  color: white;
+
+
+li {
+  list-style-type: none;
+  margin-left: 10px;
 }
+
+

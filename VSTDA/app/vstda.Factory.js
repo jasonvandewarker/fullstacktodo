@@ -5,7 +5,7 @@
        .module('app')
        .factory('VSTDAFactory', VSTDAFactory);
 
-   VSTDAFactory.$inject = ['$http', '$q']; //should this be $inject?
+   VSTDAFactory.$inject = ['$http', '$q'];
 
    function VSTDAFactory($http, $q) {
        var service = {

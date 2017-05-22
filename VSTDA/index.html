@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>VSTDA</title>
-
   <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
   <!-- endbower -->
@@ -16,10 +15,14 @@
   <!-- endinject -->
 </head>
 <!-- sets the controller -->
-
 <body ng-controller="VstdaController as vm">
 
-  <h1>Very Simple To-Do App</h1>
+  <div class="jumbotron">
+    <h1 class="display-3">FULL STACK TO DO APP</h1>
+    <p class="lead">Because you have stuff to do.</p>
+    <hr class="my-4">
+    <p>(Except for being awesome. You have that covered.)</p>
+  </div>
   <div class="container">
     <div class="row">
       <div class="col-md-4">
@@ -29,41 +32,44 @@
             <!-- input box -->
             <label for="input">What to do?</label>
             <input type="text" class="form-control" id="todoitem" placeholder="To Do" ng-model="todo.ToDoText">
-          </div>
 
-
-          <!-- select menu -->
-          <label for="selectmenu">What's the priority level?</label>
-          <select class="form-control" ng-model="todo.SetPriority">
-         <option value="1">High</option>
-         <option value="2">Medium</option>
-         <option value="3">Low</option>
+            <!-- select menu -->
+            <label for="selectmenu">What's the priority level?</label>
+            <select class="form-control" ng-model="todo.SetPriority">
+           <option value="1">High</option>
+           <option value="2">Medium</option>
+           <option value="3">Low</option>
        </select>
-          <!-- This button has a click event that connects with the function in the controller that creates the array. -->
-          <button type="submit" id="bigbutton" class="btn btn-primary btn-lg" ng-click="vm.postList">Stuff To Be Done</button>
+
+            <!-- This button has a click event that connects with the function in the controller that creates the array. -->
+            <button type="submit" id="bigbutton" class="btn btn-primary btn-lg" ng-click="vm.postList">Stuff To Be Done</button>
+
         </form>
-      </div>
-      <!-- second column -->
+        </div> 
+      </div>  <!-- end of 1st colmun div -->
+
       <div class="col-md-8">
-        <!-- button group -->
-        <div id="buttons" class="btn-group">
-          <!-- Each of these buttons creates a click event that sorts the list items -->
-          <button type="button" class="btn btn-primary" ng-click="sort = 'priority'">Highest Priority First</button>
-          <button type="button" class="btn btn-primary" ng-click="sort = '-priority'">Lowest Priority First</button>
-          <button type="button" class="btn btn-primary" ng-click="sort = 'sortType'">Sort Alphabetically</button>
-        </div>
-        <ul> Do this stuff:
-          <li ng-repeat="data in vm.toDoArray | orderBy: sort" ng-class="::{'High': todo.setPriority==1, 'Medium': todo.setPriority==2,
-          'Low': todo.setPriority==3}">{{data.toDo}}</li>
-      </ul>
+        <div class="row">
 
+          <div id="buttons" class="btn-group btn-group-lg" role="group">
+            <!-- Each of these buttons creates a click event that sorts the list items -->
+            <button type="button" class="btn btn-primary" ng-click="sort = 'priority'">Highest Priority First</button>
+            <button type="button" class="btn btn-primary" ng-click="sort = '-priority'">Lowest Priority First</button>
+            <button type="button" class="btn btn-primary" ng-click="sort = 'sortType'">Sort Alphabetically</button>
+          </div>
+          <div class="row">
+            <ul> Do this stuff:
+              <li ng-repeat="data in vm.toDoArray | orderBy: sort" ng-class="::{'High': todo.SetPriority==1, 'Medium': todo.SetPriority==2,
+              'Low': todo.SetPriority==3}">{{data.toDo}}</li>
+            </ul>
+          </div>
+          
+          </div> <!-- end of second col, row div -->
+        </div> <!-- end of second col div -->
 
-        <!-- this li is dynamically made from the array created from the input and select menu.
-The class is set by the value of the select menu item choses
-and corresponds to a CSS class that changes the background color.  -->
-      </div>
-    </div>
-  </div>
+    </div>  <!-- end of main row div -->
+  </div>   <!-- end of main container div -->
+
   <!-- bower:js -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -76,5 +82,4 @@ and corresponds to a CSS class that changes the background color.  -->
   <script src="/app/vstda.Factory.js"></script>
   <!-- endinject -->
 </body>
-
 </html>

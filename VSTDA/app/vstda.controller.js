@@ -19,6 +19,8 @@
         /////////////////////////////////
 
 
+//This function takes the to do list and priority and puts it onto 
+//the database that I created.
         vm.addTodo = function (todo) {
             todo.CreateDate = CreateDate;
             VSTDAFactory
